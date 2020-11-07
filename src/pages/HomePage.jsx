@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CustomerList from '../components/CustomerList'
+import UserProfile from '../components/UserProfile'
 
 export default function HomePage() {
 
@@ -24,6 +25,7 @@ export default function HomePage() {
     return (
         <div className='container'>
             <h1>Welcome {userLoggedIn && userLoggedIn.firstName}</h1>
+            <UserProfile />
             <CustomerList />
         </div>
     )

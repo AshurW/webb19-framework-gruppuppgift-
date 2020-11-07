@@ -7,11 +7,13 @@ import DetailViewPage from './pages/DetailViewPage';
 function App() {
   return (
     <div>
+      
      <Switch>
        <Route path='/detail/:id' component={DetailViewPage} />
        <Route path='/home' component={HomePage} />
        <Route path='/' component={LoginPage} />
      </Switch>
+
     </div>
   );
 }

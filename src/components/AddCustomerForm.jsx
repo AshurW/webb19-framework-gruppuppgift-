@@ -1,5 +1,46 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 
+
+const StyledForm = styled.form `
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 2rem;
+    background-color: CadetBlue
+`
+const StyledDiv = styled.div `
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 2rem;
+    background-color: CornflowerBlue;
+    text-align: center;
+
+`
+const StyledInput = styled.input `
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 1rem;
+    background-color: CadetBlue;
+    width: 100%;
+    text-align: center;
+
+    ${props => props.required && css`   
+        font-size: 4rem;
+    `}
+    
+`
+const StyledButton = styled.button `
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 1rem;
+    background-color: cadetBlue;
+    width: 100%;
+    color:black;
+`
+   
+const RequiredField = styled(StyledInput)`
+    border: 2px solid darkred;
+`
 export default function AddCustomerForm() {
 
     const addCustomerURL = 'https://frebi.willandskill.eu/api/v1/customers'
@@ -30,43 +71,43 @@ export default function AddCustomerForm() {
     return (
         <>
             <h5>add New customer</h5>
-            <form onSubmit={submitCustomer}>
-                <div className='form-group'>
-                    <label>Name:</label>
-                    <input type="text" name='name' />
-                </div>
-                <div className='form-group'>
-                    <label>OrganisationNr:</label>
-                    <input type="text" name='organisationNr' />
-                </div>
-                <div className='form-group'>
-                    <label>vatNr:</label>
-                    <input type="text" name='vatNr' />
-                </div>
-                <div className='form-group'>
-                    <label>reference:</label>
-                    <input type="text" name='reference' />
-                </div>
-                <div className='form-group'>
-                    <label>paymentTerm:</label>
-                    <input type="text" name='paymentTerm' />
-                </div>
-                <div className='form-group'>
-                    <label>website:</label>
-                    <input type="text" name='website' />
-                </div>
-                <div className='form-group'>
-                    <label>email:</label>
-                    <input type="email" name='email' />
-                </div>
-                <div className='form-group'>
-                    <label>phoneNr:</label>
-                    <input type="text" name='phoneNr' />
-                </div>
-                <div className="form-group">
-                    <button type="submit" className='btn btn-primary'>Add</button>
-                </div>
-            </form>
+            <StyledForm onSubmit={submitCustomer}>
+                <StyledDiv className='form-group'>
+                    <label><strong>Name:</strong></label>
+                    <RequiredField type="text" name='name' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>OrganisationNr:</strong></label>
+                    <StyledInput type="text" name='organisationNr' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>vatNr:</strong></label>
+                    <StyledInput type="text" name='vatNr' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>reference:</strong></label>
+                    <StyledInput type="text" name='reference' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>paymentTerm:</strong></label>
+                    <StyledInput type="text" name='paymentTerm' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>website:</strong></label>
+                    <StyledInput type="text" name='website' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>email:</strong></label>
+                    <StyledInput type="email" name='email' />
+                </StyledDiv>
+                <StyledDiv className='form-group'>
+                    <label><strong>phoneNr:</strong></label>
+                    <StyledInput type="text" name='phoneNr' />
+                </StyledDiv>
+                <StyledDiv className="form-group">
+                    <StyledButton type="submit" className='btn btn-primary'><strong>Add</strong></StyledButton>
+                </StyledDiv>
+            </StyledForm >
 
         </>
     )
