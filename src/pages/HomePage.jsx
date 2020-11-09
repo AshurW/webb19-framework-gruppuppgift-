@@ -23,7 +23,7 @@ export default function HomePage() {
     }, [])
 
     return (
-        <div className='container'>
+        <div className='container' mx-auto>
             <h1>Welcome {userLoggedIn && userLoggedIn.firstName}</h1>
             <UserProfile />
             <CustomerList />

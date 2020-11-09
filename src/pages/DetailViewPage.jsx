@@ -1,4 +1,15 @@
 import React, {useState, useEffect} from 'react'
+import styled from 'styled-components';
+
+const StyledDetailInfo = styled.div `
+    margin: 2rem auto;
+    width: 50%;
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 0.3rem;
+    background-color: CornflowerBlue;
+    text-align: center;
+`
 
 export default function DetailViewPage(props) {
 
@@ -22,19 +33,18 @@ export default function DetailViewPage(props) {
     }, [])
 
     return (
-        <div>
-            <h2>detail</h2>
+        <div className='container'>
             {customerDetailData && (
-                <>
-                    <p>{customerDetailData.name}</p>
-                    <p>{customerDetailData.organisationNr}</p>
-                    <p>{customerDetailData.vatNr}</p>
-                    <p>{customerDetailData.reference}</p>
-                    <p>{customerDetailData.paymentTerm}</p>
-                    <p>{customerDetailData.website}</p>
-                    <p>{customerDetailData.email}</p>
-                    <p>{customerDetailData.phoneNumber}</p>
-                </>
+                <StyledDetailInfo>
+                    <h2>{customerDetailData.name} Detail Page</h2>
+                    <p>OrganisationNr: {customerDetailData.organisationNr}</p>
+                    <p>VatNr: {customerDetailData.vatNr}</p>
+                    <p>Reference: {customerDetailData.reference}</p>
+                    <p>PaymentTerm: {customerDetailData.paymentTerm}</p>
+                    <p>Website: {customerDetailData.website}</p>
+                    <p>Email: {customerDetailData.email}</p>
+                    <p>PhoneNumber: {customerDetailData.phoneNumber}</p>
+                </StyledDetailInfo>
             )}
         </div>
     )

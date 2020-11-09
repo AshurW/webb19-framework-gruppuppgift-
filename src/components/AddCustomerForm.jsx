@@ -4,14 +4,16 @@ import styled, { css } from 'styled-components'
 
 const StyledForm = styled.form `
     border-radius: 7px;
-    border: 2px solid black;
-    padding: 2rem;
-    background-color: CadetBlue
+    width: 50%;
+    margin: 0 auto;
+    /* border: 2px solid black; */
+    /* padding: 1rem; */
+    /* background-color: CadetBlue */
 `
 const StyledDiv = styled.div `
     border-radius: 7px;
     border: 2px solid black;
-    padding: 2rem;
+    padding: 0.3rem;
     background-color: CornflowerBlue;
     text-align: center;
 
@@ -19,20 +21,19 @@ const StyledDiv = styled.div `
 const StyledInput = styled.input `
     border-radius: 7px;
     border: 2px solid black;
-    padding: 1rem;
+    /* padding: 0.5rem; */
     background-color: CadetBlue;
     width: 100%;
     text-align: center;
 
     ${props => props.required && css`   
-        font-size: 4rem;
+        font-size: 2rem;
     `}
     
 `
 const StyledButton = styled.button `
     border-radius: 7px;
     border: 2px solid black;
-    padding: 1rem;
     background-color: cadetBlue;
     width: 100%;
     color:black;
@@ -70,7 +71,7 @@ export default function AddCustomerForm() {
 
     return (
         <>
-            <h5>add New customer</h5>
+            <h5>Add New customer</h5>
             <StyledForm onSubmit={submitCustomer}>
                 <StyledDiv className='form-group'>
                     <label><strong>Name:</strong></label>
