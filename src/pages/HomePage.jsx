@@ -1,21 +1,24 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import CustomerList from '../components/CustomerList'
 import UserProfile from '../components/UserProfile'
+import { UserContext } from '../contexts/UserContext'
 
 export default function HomePage() {
 
-    const [userLoggedIn, setuserLoggedIn] = useState({})
+    const [userData, setUserData] = useContext(UserContext)
     const userLoggedInURL = 'https://frebi.willandskill.eu/api/v1/me'
 
     function fetchLoggedInUser() {
-        fetch(userLoggedInURL, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
-            } 
-        })
-        .then(res => res.json())
-        .then(data => setuserLoggedIn(data))
+        if (!userData) {
+            fetch(userLoggedInURL, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => setUserData(data))
+        }
     }
 
     useEffect(() => {
@@ -24,7 +27,7 @@ export default function HomePage() {
 
     return (
         <div className='container' mx-auto>
-            <h1>Welcome {userLoggedIn && userLoggedIn.firstName}</h1>
+            <h1>Welcome {userData && userData.firstName}</h1>
             <UserProfile />
             <CustomerList />
         </div>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import AddCustomerForm from './AddCustomerForm'
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { CustomerContext } from '../contexts/CustomerContext';
 
 const StyledCustomer = styled.div `
     margin: 1rem auto;
@@ -15,18 +16,20 @@ const StyledCustomer = styled.div `
 
 
 export default function CustomerList() {
-    const [customerListData, setCustomerListData] = useState(null)
+    const [customerListData, setCustomerListData] = useContext(CustomerContext)
     const customerListURL = 'https://frebi.willandskill.eu/api/v1/customers'
 
     function fetchCustomerList() {
-        fetch(customerListURL, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setCustomerListData(data.results))
+        if(!customerListData) {
+            fetch(customerListURL, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => setCustomerListData(data.results))
+        }
     }
 
     useEffect(() => {

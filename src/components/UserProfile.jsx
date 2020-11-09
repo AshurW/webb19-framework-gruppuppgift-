@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../contexts/UserContext'
 
 export default function UserProfile() {
 
-    const [online, setOnline] = useState(null)
-    const url = 'https://frebi.willandskill.eu/api/v1/me'
+    const [userData] = useContext(UserContext)
 
-    function fetchUser() {
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
-            } 
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setOnline(data)
-            })
-    }
-
-    useEffect(() => {
-        fetchUser()
-    }, [])
     return (
         <div>
-            {online && (
+            {userData && (
                 <>
-                    <div>{online.firstName} {online.lastName} </div>
-                    <div>{online.email} </div>
+                    <div>{userData.firstName} {userData.lastName} </div>
+                    <div>{userData.email} </div>
                 </>
             )}
         </div>
