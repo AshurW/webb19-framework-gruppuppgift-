@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 
@@ -8,7 +8,7 @@ export default function LoginForm() {
 
     function loginSubmit(e) {
         e.preventDefault()
- 
+
         const payload = {
             email: e.target.email.value,
             password: e.target.password.value
@@ -21,14 +21,14 @@ export default function LoginForm() {
             },
             body: JSON.stringify(payload)
         }).then(res => res.json())
-        .then(data => {
-            localStorage.setItem('loginToken', data.token)
-            if(data.token) {
-                history.push('/home')
-            } else (
-                history.push('/')
-            )
-        })  
+            .then(data => {
+                localStorage.setItem('loginToken', data.token)
+                if (data.token) {
+                    history.push('/home')
+                } else (
+                    history.push('/')
+                )
+            })
     }
 
     return (
@@ -36,11 +36,11 @@ export default function LoginForm() {
             <form onSubmit={loginSubmit}>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="email" name='email' className='form-control'/>
+                    <input type="email" name='email' className='form-control' />
                 </div>
                 <div className="form-group">
                     <label>Pasword:</label>
-                    <input type="text" name='password' className='form-control'/>
+                    <input type="text" name='password' className='form-control' />
                 </div>
                 <button type="submit" className='btn btn-primary'>Login</button>
             </form>

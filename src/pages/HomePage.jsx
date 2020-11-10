@@ -6,7 +6,7 @@ import { UserContext } from '../contexts/UserContext'
 export default function HomePage() {
 
     const [userData, setUserData] = useContext(UserContext)
-    const userLoggedInURL = 'https://frebi.willandskill.eu/api/v1/me'
+    const userLoggedInURL = 'https://frebi.willandskill.eu/api/v1/me/'
 
     function fetchLoggedInUser() {
         if (!userData) {
@@ -26,7 +26,7 @@ export default function HomePage() {
     }, [])
 
     return (
-        <div className='container' mx-auto>
+        <div className='container'>
             <h1>Welcome {userData && userData.firstName}</h1>
             <UserProfile />
             <CustomerList />

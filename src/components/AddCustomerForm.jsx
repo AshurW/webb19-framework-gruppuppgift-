@@ -6,9 +6,6 @@ const StyledForm = styled.form `
     border-radius: 7px;
     width: 50%;
     margin: 0 auto;
-    /* border: 2px solid black; */
-    /* padding: 1rem; */
-    /* background-color: CadetBlue */
 `
 const StyledDiv = styled.div `
     border-radius: 7px;
@@ -21,7 +18,6 @@ const StyledDiv = styled.div `
 const StyledInput = styled.input `
     border-radius: 7px;
     border: 2px solid black;
-    /* padding: 0.5rem; */
     background-color: CadetBlue;
     width: 100%;
     text-align: center;
@@ -44,26 +40,26 @@ const RequiredField = styled(StyledInput)`
 `
 export default function AddCustomerForm() {
 
-    const addCustomerURL = 'https://frebi.willandskill.eu/api/v1/customers'
+    const addCustomerURL = 'https://frebi.willandskill.eu/api/v1/customers/'
 
     function submitCustomer(e) {
         e.preventDefault()
         const payload = {
             name: e.target.name.value,
-            organisationNr: e.target.organisationNr.value,
-            vatNr: e.target.vatNr.value,
-            reference: e.target.reference.value,
-            paymentTerm: parseInt(e.target.paymentTerm.value),
-            website: e.target.website.value,
-            email: e.target.email.value,
-            phoneNumber: e.target.phoneNr.value
+            organisationNr: e.target.organisationNr.value || '',
+            vatNr: e.target.vatNr.value || '',
+            reference: e.target.reference.value || '',
+            paymentTerm: parseInt(e.target.paymentTerm.value) || 0,
+            website: e.target.website.value || '',
+            email: e.target.email.value || '',
+            phoneNumber: e.target.phoneNr.value || ''
         }
         console.log(payload)
         fetch(addCustomerURL, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('loginToken')}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
             },
             body: JSON.stringify(payload)
         }).then(res => console.log(res))
@@ -99,7 +95,7 @@ export default function AddCustomerForm() {
                 </StyledDiv>
                 <StyledDiv className='form-group'>
                     <label><strong>email:</strong></label>
-                    <StyledInput type="email" name='email' />
+                    <StyledInput type="text" name='email' />
                 </StyledDiv>
                 <StyledDiv className='form-group'>
                     <label><strong>phoneNr:</strong></label>
@@ -109,7 +105,6 @@ export default function AddCustomerForm() {
                     <StyledButton type="submit" className='btn btn-primary'><strong>Add</strong></StyledButton>
                 </StyledDiv>
             </StyledForm >
-
         </>
     )
 }

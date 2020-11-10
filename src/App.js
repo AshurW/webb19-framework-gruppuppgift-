@@ -1,5 +1,5 @@
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import DetailViewPage from './pages/DetailViewPage';
@@ -12,9 +12,13 @@ function App() {
       <UserProvider>
         <CustomerProvider>
           <Switch>
-            <Route path='/detail/:id' component={DetailViewPage} />
-            <Route path='/home' component={HomePage} />
-            <Route path='/' component={LoginPage} />
+            <Route exact path='/' component={LoginPage} />
+            {localStorage.getItem('loginToken') ? (
+              <>
+                <Route exact path='/detail/:id' component={DetailViewPage} />
+                <Route exact path='/home' component={HomePage} />
+              </>
+            ) : <Redirect to='/' />}
           </Switch>
         </CustomerProvider>
       </UserProvider>
