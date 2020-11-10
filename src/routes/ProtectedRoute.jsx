@@ -5,11 +5,11 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
             {...rest}
-            render={() =>
-                !localStorage.getItem('loginToken') ? (
+            render={props =>
+                !localStorage.getItem('loginToken') || localStorage.getItem('loginToken') === 'undefined' ? (
                     <Redirect to={'/'} />
                 ) : (
-                        <Component />
+                        <Component {...props}/>
                     )
             }
         />

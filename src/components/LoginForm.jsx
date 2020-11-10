@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-
+import React from 'react'
 
 export default function LoginForm() {
-    const history = useHistory()
     const tokenURL = 'https://frebi.willandskill.eu/api-token-auth/'
 
     function loginSubmit(e) {
@@ -23,11 +20,7 @@ export default function LoginForm() {
         }).then(res => res.json())
             .then(data => {
                 localStorage.setItem('loginToken', data.token)
-                if (data.token) {
-                    history.push('/home')
-                } else (
-                    history.push('/')
-                )
+                window.location.reload()
             })
     }
 

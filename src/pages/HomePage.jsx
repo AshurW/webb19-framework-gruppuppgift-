@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import CustomerList from '../components/CustomerList'
 import UserProfile from '../components/UserProfile'
 import { UserContext } from '../contexts/UserContext'
-import { CustomerContext } from '../contexts/CustomerContext';
 export default function HomePage() {
 
     const [userData, setUserData] = useContext(UserContext)

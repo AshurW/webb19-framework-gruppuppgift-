@@ -1,11 +1,12 @@
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import DetailViewPage from './pages/DetailViewPage';
 import { CustomerProvider } from './contexts/CustomerContext';
 import { UserProvider } from './contexts/UserContext';
-import ProtectedRoute from './routes/HomeRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
+import LoginRoute from './routes/LoginRoute';
 
 function App() {
 
@@ -16,9 +17,9 @@ function App() {
       <UserProvider>
         <CustomerProvider>
           <Switch>
-            <Route exact path='/' component={LoginPage} />
-            <ProtectedRoute exact path='/detail/:id' component={DetailViewPage} />
-            <ProtectedRoute exact path='/home' component={HomePage} />
+            <ProtectedRoute path='/detail/:id' component={DetailViewPage} />
+            <ProtectedRoute path='/home' component={HomePage} />
+            <LoginRoute path='/' component={LoginPage} />
           </Switch>
         </CustomerProvider>
       </UserProvider>

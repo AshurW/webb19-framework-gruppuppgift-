@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import AddCustomerForm from './AddCustomerForm'
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { CustomerContext } from '../contexts/CustomerContext';
 
 const StyledCustomer = styled.div `

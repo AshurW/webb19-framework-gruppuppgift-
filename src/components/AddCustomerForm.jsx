@@ -1,7 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { CustomerContext } from '../contexts/CustomerContext'
-
 
 const StyledForm = styled.form`
     border-radius: 7px;
@@ -109,7 +107,7 @@ export default function AddCustomerForm() {
                 </StyledDiv>
                 <StyledDiv className='form-group'>
                     <label><strong>email:</strong></label>
-                    <StyledInput type="text" name='email' />
+                    <StyledInput type="email" name='email' />
                 </StyledDiv>
                 <StyledDiv className='form-group'>
                     <label><strong>phoneNr:</strong></label>
