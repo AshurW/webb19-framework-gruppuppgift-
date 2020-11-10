@@ -23,7 +23,7 @@ const StyledInput = styled.input `
     text-align: center;
 
     ${props => props.required && css`   
-        font-size: 2rem;
+        font-size: 1.3rem;
     `}
     
 `
@@ -71,7 +71,7 @@ export default function AddCustomerForm() {
             <StyledForm onSubmit={submitCustomer}>
                 <StyledDiv className='form-group'>
                     <label><strong>Name:</strong></label>
-                    <RequiredField type="text" name='name' />
+                    <RequiredField type="text" name='name' required />
                 </StyledDiv>
                 <StyledDiv className='form-group'>
                     <label><strong>OrganisationNr:</strong></label>
