@@ -16,8 +16,9 @@ const StyledCustomer = styled.div `
 
 
 export default function CustomerList() {
-    const [customerListData, setCustomerListData] = useContext(CustomerContext)
+    const { customerListData, setCustomerListData } = useContext(CustomerContext)
     const customerListURL = 'https://frebi.willandskill.eu/api/v1/customers'
+    
 
     function fetchCustomerList() {
         if(!customerListData) {
@@ -35,6 +36,7 @@ export default function CustomerList() {
     useEffect(() => {
         fetchCustomerList()
     }, [])
+
 
 
     return (

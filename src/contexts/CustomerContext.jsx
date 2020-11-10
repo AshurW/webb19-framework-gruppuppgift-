@@ -7,7 +7,7 @@ export function CustomerProvider(props) {
     const [customerListData, setCustomerListData] = useState(null)
 
     return (
-        <CustomerContext.Provider value={[customerListData, setCustomerListData]}>
+        <CustomerContext.Provider value={{customerListData, setCustomerListData}}>
             {props.children}
         </CustomerContext.Provider>
     )
