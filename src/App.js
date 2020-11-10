@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import DetailViewPage from './pages/DetailViewPage';
 import { CustomerProvider } from './contexts/CustomerContext';
 import { UserProvider } from './contexts/UserContext';
+import ProtectedRoute from './routes/HomeRoute';
 
 function App() {
 
@@ -16,12 +17,8 @@ function App() {
         <CustomerProvider>
           <Switch>
             <Route exact path='/' component={LoginPage} />
-            {localStorage.getItem('loginToken') ? (
-              <>
-                <Route exact path='/detail/:id' component={DetailViewPage} />
-                <Route exact path='/home' component={HomePage} />
-              </>
-            ) : <Redirect to='/' />}
+            <ProtectedRoute exact path='/detail/:id' component={DetailViewPage} />
+            <ProtectedRoute exact path='/home' component={HomePage} />
           </Switch>
         </CustomerProvider>
       </UserProvider>
