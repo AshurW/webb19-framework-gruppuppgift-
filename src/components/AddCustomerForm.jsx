@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { CustomerContext } from '../contexts/CustomerContext'
 
 
 const StyledForm = styled.form `
@@ -62,7 +63,10 @@ export default function AddCustomerForm() {
                 'Authorization': `Bearer ${localStorage.getItem('loginToken')}`
             },
             body: JSON.stringify(payload)
-        }).then(res => console.log(res))
+        }).then(res => {
+            window.location.reload();
+            console.log(res)
+        })
     }
 
     return (
